@@ -1,10 +1,10 @@
 package daj.user.testComponents;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import daj.common.types.AppPage;
+import daj.common.types.PageAndFilterRequestDto;
 import daj.user.visible.port.dto.UserDto;
 import daj.user.visible.port.out.IUserReaderOutputPort;
 
@@ -28,7 +28,7 @@ public class StuffToNotFail implements IUserReaderOutputPort {
   }
 
   @Override
-  public AppPage<UserDto> findByPage(PageRequest pageReq) {
+  public AppPage<UserDto> findByPage(PageAndFilterRequestDto reqDto) {
     throw new UnsupportedOperationException("Unimplemented method 'findByPage'");
   }
 

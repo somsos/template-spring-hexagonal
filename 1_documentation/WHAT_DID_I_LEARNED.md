@@ -54,7 +54,9 @@ to understand the whole is easier for us.
 
 [Diagram of two ways]
 
-### Pitfalls for mapping objects
+## Pitfalls
+
+### On Mapping Objects
 
 Caution It could be tempting to inherent from the DTO, but this is not a good
 idea, because **ProductSaveRequest is not a ProductDTO**, the first one is to get the
@@ -70,6 +72,41 @@ domain doesn't depend of outside layers.
 **Save boilerplate** using libraries in my case `mapstruct` is easy to use and
 I try to don't make it do complex things as map lists inside od the object to map,
 for this the library give us the option to implement it ourselves.
+
+### On JPA Hibernate
+
+Be careful on how do you include parameters in native queries, because I had the
+problem of it did make the sustitions, I was making it this way.
+
+```java
+@Query(
+  nativeQuery = true,
+  value = "SELECT u.id FROM users u " + 
+
+  "OR u.username LIKE '%:overall%'" +    // <--------- Error
+
+  ...
+)
+List<Integer> overallQuery(@Param("overall") String overall);
+```
+
+Since my point of view there is any problems of how is included, but it seems
+it's a little delicated, so I endup doing it like this.
+
+```java
+  @Query(
+    nativeQuery = true,
+    value = "SELECT u.id FROM users u " + 
+  
+    "OR u.username LIKE CONCAT('%', :overall, '%') "+ // <---------- Solution
+
+    ...
+  )
+  List<Integer> overallQuery(@Param("overall") String overall);
+```
+
+I think by security motives Hibernate do not include the variables, in
+risky areas.
 
 ## Errors
 

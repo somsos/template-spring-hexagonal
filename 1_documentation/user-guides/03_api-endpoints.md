@@ -240,8 +240,15 @@ Request
 
 ```r
 curl -i -X GET \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzM2OTc5OTQzLCJleHAiOjE3MzY5ODExNDN9.xJLdWqDTy4DPKjV_Vy1WGdjf4eDJSLVknRQQYr51ioY" \
-  http://localhost:8080/users/page
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQyNTI0MzY4LCJleHAiOjE3NDI1MzE1Njh9.Uoy0__U8SLNIjdX3Up8mSFCJfi45CTl8oIr_6dVrlJA" \
+  'http://localhost:8080/users/page'
+
+#Complex request
+# Note: data-urlencode is the same that a query params, I use these for readability
+curl -i -X GET \
+   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQyNTI0MzY4LCJleHAiOjE3NDI1MzE1Njh9.Uoy0__U8SLNIjdX3Up8mSFCJfi45CTl8oIr_6dVrlJA' \
+  'http://localhost:8080/users/page?page=0&itemsPerPage=5&sortBy=username&sortDirection=asc&query=an'
+  
 ```
 
 Response

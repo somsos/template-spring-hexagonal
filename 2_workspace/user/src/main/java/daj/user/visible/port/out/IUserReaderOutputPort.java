@@ -1,8 +1,7 @@
 package daj.user.visible.port.out;
 
-import org.springframework.data.domain.PageRequest;
-
 import daj.common.types.AppPage;
+import daj.common.types.PageAndFilterRequestDto;
 import daj.user.visible.port.dto.UserDto;
 
 public interface IUserReaderOutputPort {
@@ -11,6 +10,6 @@ public interface IUserReaderOutputPort {
 
   UserDto findById(Integer userId);
 
-  AppPage<UserDto> findByPage(PageRequest pageReq);
+  AppPage<UserDto> findByPage(PageAndFilterRequestDto reqDto);
 
 }

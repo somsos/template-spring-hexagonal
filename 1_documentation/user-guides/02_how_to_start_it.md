@@ -11,7 +11,7 @@ docker run --name jab_db --rm \
   -e POSTGRES_DB=jab_db_test \
   -e POSTGRES_USER=jab_db_user \
   -e POSTGRES_PASSWORD=jab_db_pass \
-  postgres:17.2-alpine3.21
+  postgres:17.2-alpine3.21 -c log_statement=all
 ```
 
 To check if the instance was created we can connect to it using.
