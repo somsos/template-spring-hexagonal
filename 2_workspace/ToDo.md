@@ -48,6 +48,7 @@ Users
     - [ ] Check what other diagrams should be useful
       - [ ] Onion diagram
     - [ ] Left clear
+    - [ ] Write about how if one whats to save a byte[] in DB we need to give them a special compress
 
 - [X] Create template from this project
   - [X] Create essay
@@ -67,3 +68,13 @@ Users
   - [X] Fix error on images product cascade on product delete
   - [X] Avoid check token when the request have method OPTIONS (for cors)
   - 
+
+curl 'http://localhost:8080/users/21/pictures' \
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQzOTAyMzk4LCJleHAiOjE3NDM5MDk1OTh9.QNwFa3bXIsHOJeiXvudt1N2gbx9fhI-2O-aa-WeLoFc" \
+  --data-raw $'------WebKitFormBoundaryM0KAAKnV5Dd2jyBn\r\nContent-Disposition: form-data; name="picture"; filename="cuadro_amarillo.png"\r\nContent-Type: image/png\r\n\r\n\r\n------WebKitFormBoundaryM0KAAKnV5Dd2jyBn--\r\n'
+
+
+curl -v \
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQzOTAyMzk4LCJleHAiOjE3NDM5MDk1OTh9.QNwFa3bXIsHOJeiXvudt1N2gbx9fhI-2O-aa-WeLoFc" \
+  -F picture=@./temporal/small_black.png  \
+  'http://localhost:8080/users/1/pictures'

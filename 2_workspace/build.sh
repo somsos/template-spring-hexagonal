@@ -2,7 +2,7 @@
 set -e
 
 
-echo "\n\n\n\n######### Building common #########"
+echo -e "\n######### Building common #########"
 cd common
 mvn clean install -DskipTests=true
 

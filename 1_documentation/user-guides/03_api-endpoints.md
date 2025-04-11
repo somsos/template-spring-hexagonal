@@ -19,6 +19,7 @@
     - [delete image](#delete-image)
   - [Users Crud](#users-crud)
     - [get by page](#get-by-page)
+    - [See image](#see-image-1)
   - [Quick notes](#quick-notes)
 
 ## Auth
@@ -118,6 +119,7 @@ curl -X PUT -i \
   --data '{ "description": "Trompo numero 1111" }' \
   http://localhost:8080/products/1
 ```
+
 ### Find by page
 
 Request
@@ -292,6 +294,19 @@ Response
    "totalPages" : 1
 }
 ```
+
+### See image
+
+```shell
+
+curl -i -X GET "http://localhost:8080/users/1/pictures"
+
+
+
+```
+
+
+
 
 <!--
 

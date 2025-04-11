@@ -8,9 +8,14 @@ import org.mapstruct.Mapper;
 import daj.adapter.user.inWeb.reqAndResp.LoginRequest;
 import daj.adapter.user.inWeb.reqAndResp.RegisterRequest;
 import daj.adapter.user.inWeb.reqAndResp.RegisterResponse;
+import daj.adapter.user.inWeb.reqAndResp.UserAddRequest;
+import daj.adapter.user.inWeb.reqAndResp.UserAddResponse;
+import daj.adapter.user.inWeb.reqAndResp.UserPictureUploadResponse;
 import daj.adapter.user.inWeb.reqAndResp.UserResponse;
 import daj.adapter.user.outDB.entity.UserEntity;
+import daj.adapter.user.outDB.entity.UserPictureEntity;
 import daj.user.visible.port.dto.UserDto;
+import daj.user.visible.port.dto.UserPictureDto;
 import daj.user.visible.port.dto.UserRoleDto;
 import jakarta.validation.Valid;
 
@@ -50,6 +55,26 @@ public interface IUserMapper {
     
     return casted;
   }
+
+  UserDto requestSaveToDto(UserAddRequest entity);
   
+  
+  UserAddResponse dtoToAddedResponse(UserDto entity);
+  
+
+  UserPictureUploadResponse userPictureDtoToUserPictureUploadResponse(UserPictureDto saved);
+
+
+  UserPictureEntity userPictureDtoToUserPictureEntity(UserPictureDto requestDto);
+  default UserEntity map(Integer value) {
+    final UserEntity user = new UserEntity();
+    user.setId(value);
+    return user;
+  }
+
+  UserPictureDto userPictureEntityToPictureDto(UserPictureEntity saved);
+  default Integer map(UserEntity value) {
+    return value.getId();
+  }
 
 }

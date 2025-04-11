@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import daj.common.types.AppPage;
 import daj.common.types.PageAndFilterRequestDto;
 import daj.user.visible.port.dto.UserDto;
+import daj.user.visible.port.dto.UserPictureDto;
 import daj.user.visible.port.out.IUserReaderOutputPort;
 
 
@@ -30,6 +31,24 @@ public class StuffToNotFail implements IUserReaderOutputPort {
   @Override
   public AppPage<UserDto> findByPage(PageAndFilterRequestDto reqDto) {
     throw new UnsupportedOperationException("Unimplemented method 'findByPage'");
+  }
+
+  @Override
+  public UserDto save(UserDto reqDto) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'save'");
+  }
+
+  @Override
+  public UserPictureDto saveImage(UserPictureDto requestDto) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'saveImage'");
+  }
+
+  @Override
+  public UserPictureDto findImageByUserId(Integer idUser) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'findImageByUserId'");
   }
 
   

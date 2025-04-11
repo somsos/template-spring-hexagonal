@@ -18,6 +18,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -25,6 +26,8 @@ import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 @Table(
   name = "users",
@@ -37,7 +40,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class UserEntity {
+public class UserEntity implements Serializable {
   
   @Id()
   @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -66,13 +69,17 @@ public class UserEntity {
   private Date updatedAt;
 
 
-  @ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+  @ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
   @JoinTable(
     name="users_roles",
     joinColumns=@JoinColumn(name="user_id"),
     inverseJoinColumns=@JoinColumn(name="role_id"),
     uniqueConstraints= {@UniqueConstraint(columnNames={"user_id", "role_id"}) })
   private List<RoleEntity> roles;
+
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "picture_id", referencedColumnName = "id_picture")
+  private UserPictureEntity idPicture;
 
   @Column(name="deleted_at", nullable = true)
   @Temporal(TemporalType.TIMESTAMP)

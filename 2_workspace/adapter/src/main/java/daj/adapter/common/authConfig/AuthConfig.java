@@ -21,6 +21,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import daj.adapter.user.inWeb.AuthController;
+import daj.adapter.user.inWeb.UserController;
 import daj.product.visible.config.IProductConstants;
 
 import static daj.adapter.common.AuthConstants.ROLE_PRODUCT;
@@ -66,6 +67,13 @@ public class AuthConfig {
                     ).permitAll()
 
                 .requestMatchers(HttpMethod.OPTIONS, "**").permitAll()
+
+                
+                //Users
+                .requestMatchers(HttpMethod.GET,
+                    UserController.POINT_USER_PICTURE
+                    ).permitAll()
+                
 
                 .requestMatchers(HttpMethod.GET,
                         IProductConstants.POINT_PRODUCTS_IMAGE_ID,

@@ -110,6 +110,22 @@ risky areas.
 
 ## Errors
 
+### Could not determine recommended JdbcType for <class>
+
+Source: https://stackoverflow.com/questions/73312803/could-not-determine-recommended-jdbctype-for-class
+
+Adding implements Serializable on the entity class solves the problem.
+
+```java
+
+import java.io.Serializable;
+
+@Entity
+public class Employee implements Serializable {
+```
+
+
+
 ### org.springframework.data.jpa.repository.Query and @Entity
 
 I had an error
@@ -157,3 +173,7 @@ the problem od when I started to order them by creating_date, they didn't change
 the order as I wanted because they had been created the same day.
 
 And the recommended way is to save the timestamp that includes
+
+
+
+

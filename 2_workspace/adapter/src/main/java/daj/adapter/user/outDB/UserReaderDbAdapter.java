@@ -9,11 +9,15 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 import daj.adapter.user.outDB.entity.UserEntity;
+import daj.adapter.user.outDB.entity.UserPictureEntity;
+import daj.adapter.user.outDB.repository.UserPictureRepository;
 import daj.adapter.user.outDB.repository.UserRepository;
 import daj.adapter.user.utils.IUserMapper;
+import daj.common.error.ErrorResponse;
 import daj.common.types.AppPage;
 import daj.common.types.PageAndFilterRequestDto;
 import daj.user.visible.port.dto.UserDto;
+import daj.user.visible.port.dto.UserPictureDto;
 import daj.user.visible.port.out.IUserReaderOutputPort;
 import lombok.AllArgsConstructor;
 
@@ -23,6 +27,8 @@ import lombok.AllArgsConstructor;
 public class UserReaderDbAdapter implements IUserReaderOutputPort {
 
   private final UserRepository repo;
+
+  private final UserPictureRepository repoPictures;
 
   private final IUserMapper mapper;
 
@@ -62,6 +68,38 @@ public class UserReaderDbAdapter implements IUserReaderOutputPort {
       contentMapped, totalItems, reqDto.page.getPageNumber(), reqDto.page.getPageSize()
     );
     return output;
+  }
+  
+  @Override
+  public UserDto save(UserDto reqDto) {
+    final UserEntity entity = mapper.dtoToEntity(reqDto);
+    final UserEntity saved = repo.save(entity);
+    final UserDto savedMapped = mapper.entityToDto(saved);
+    return savedMapped;
+  }
+
+  @Override
+  public UserPictureDto saveImage(UserPictureDto requestDto) {
+    final UserEntity entity = repo.findById(requestDto.getIdUser()).orElse(null);
+    if (entity == null) {
+      throw new ErrorResponse("user id not found", 400, "");
+    }
+
+    final UserPictureEntity toSave = mapper.userPictureDtoToUserPictureEntity(requestDto);
+    final UserPictureEntity saved = this.repoPictures.save(toSave);
+    
+    final UserPictureDto savedMapped = mapper.userPictureEntityToPictureDto(saved);
+    return savedMapped;
+  }
+
+  @Override
+  public UserPictureDto findImageByUserId(Integer idUser) {
+    final UserPictureEntity pictureFound = this.repoPictures.findByIdUser(idUser);
+    if(pictureFound == null) {
+      return null;
+    }
+    final UserPictureDto response = mapper.userPictureEntityToPictureDto(pictureFound);
+    return response;
   }
   
 }
