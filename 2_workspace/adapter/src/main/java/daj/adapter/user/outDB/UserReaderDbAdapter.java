@@ -101,5 +101,30 @@ public class UserReaderDbAdapter implements IUserReaderOutputPort {
     final UserPictureDto response = mapper.userPictureEntityToPictureDto(pictureFound);
     return response;
   }
+
+  @Override
+  public UserDto getUserById(Integer idUser) {
+    final UserEntity found = repo.findById(idUser).orElse(null);
+    if(found == null) {
+      throw new ErrorResponse("User not found", 404, "");
+    }
+  
+    final UserDto foundMapped = mapper.entityToDto(found);
+    return foundMapped; 
+  }
+
+  @Override
+  public UserDto update(Integer idUser, UserDto newInfo) {
+    final UserEntity oldInfo = repo.findById(idUser).orElse(null);
+    if(oldInfo == null) {
+      throw new ErrorResponse("User not found", 404, "");
+    }
+    this.mapper.updateUserFromDto(newInfo, oldInfo);
+    oldInfo.setId(idUser);
+    final UserEntity updated = repo.save(oldInfo);
+    final UserDto response = mapper.entityToDto(updated);
+    return response; 
+  }
+
   
 }

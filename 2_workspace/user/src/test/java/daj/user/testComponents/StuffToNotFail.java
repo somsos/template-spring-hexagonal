@@ -51,6 +51,18 @@ public class StuffToNotFail implements IUserReaderOutputPort {
     throw new UnsupportedOperationException("Unimplemented method 'findImageByUserId'");
   }
 
+  @Override
+  public UserDto getUserById(Integer idUser) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getUserById'");
+  }
+
+  @Override
+  public UserDto update(Integer idUser, UserDto newInfo) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'update'");
+  }
+
   
   
 }

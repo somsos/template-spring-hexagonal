@@ -3,7 +3,10 @@ package daj.adapter.user.utils;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import daj.adapter.user.inWeb.reqAndResp.LoginRequest;
 import daj.adapter.user.inWeb.reqAndResp.RegisterRequest;
@@ -12,6 +15,7 @@ import daj.adapter.user.inWeb.reqAndResp.UserAddRequest;
 import daj.adapter.user.inWeb.reqAndResp.UserAddResponse;
 import daj.adapter.user.inWeb.reqAndResp.UserPictureUploadResponse;
 import daj.adapter.user.inWeb.reqAndResp.UserResponse;
+import daj.adapter.user.inWeb.reqAndResp.UserUpdateRequest;
 import daj.adapter.user.outDB.entity.UserEntity;
 import daj.adapter.user.outDB.entity.UserPictureEntity;
 import daj.user.visible.port.dto.UserDto;
@@ -76,5 +80,12 @@ public interface IUserMapper {
   default Integer map(UserEntity value) {
     return value.getId();
   }
+  
+  UserResponse dtoToUserResponse(UserDto found);
+  
+  UserDto updateRequestToDto(UserUpdateRequest updateRequest);
+
+  @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+  void updateUserFromDto(UserDto newInfo, @MappingTarget UserEntity entity);
 
 }

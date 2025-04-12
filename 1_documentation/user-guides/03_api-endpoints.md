@@ -19,7 +19,9 @@
     - [delete image](#delete-image)
   - [Users Crud](#users-crud)
     - [get by page](#get-by-page)
-    - [See image](#see-image-1)
+    - [Find user by id](#find-user-by-id)
+    - [See user picture](#see-user-picture)
+    - [Update user](#update-user)
   - [Quick notes](#quick-notes)
 
 ## Auth
@@ -295,15 +297,30 @@ Response
 }
 ```
 
-### See image
+### Find user by id
 
 ```shell
-
-curl -i -X GET "http://localhost:8080/users/1/pictures"
-
-
+curl -i -X GET \
+   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQ0NDExNzQzLCJleHAiOjE3NDQ0MTg5NDN9.mOUx5mdEXRj-LtCo2NJj_umupAnsJOA4ptNmAzyrO1g' \
+  'http://localhost:8080/users/1'
 
 ```
+
+### See user picture
+
+```shell
+curl -i -X GET "http://localhost:8080/users/1/pictures"
+```
+
+### Update user
+
+```shell
+curl 'http://localhost:8080/users/1' -X 'PUT' \
+-H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQ0NDE5MzU1LCJleHAiOjE3NDQ0MjY1NTV9.6zmnCOGxOlXm8p-BrWCcBevRAkk8pCWxl5M0jBoF3p0' \
+  --data-raw '{"username":"john","email":"john_doe@email.com","changePassEnabled":false,"id":1,"roles":[{"id":-56,"authority":"Products"}],"pictureFile":null}'
+```
+
 
 
 

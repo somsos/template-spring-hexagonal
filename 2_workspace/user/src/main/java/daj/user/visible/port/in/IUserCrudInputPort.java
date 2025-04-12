@@ -14,5 +14,9 @@ public interface IUserCrudInputPort {
   UserPictureDto saveImage(UserPictureDto requestDto);
 
   UserPictureDto findImageByUserId(Integer id);
+
+  UserDto getUserById(Integer id);
+
+  UserDto update(Integer id, UserDto casted);
   
 }

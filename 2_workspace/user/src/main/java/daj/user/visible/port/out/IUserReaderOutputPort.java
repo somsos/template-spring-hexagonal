@@ -19,4 +19,8 @@ public interface IUserReaderOutputPort {
 
   UserPictureDto findImageByUserId(Integer idUser);
 
+  UserDto getUserById(Integer idUser);
+
+  UserDto update(Integer idUser, UserDto newInfo);
+
 }

@@ -35,5 +35,15 @@ public class UserCrudService implements IUserCrudInputPort {
   public UserPictureDto findImageByUserId(Integer idUser) {
     return userReader.findImageByUserId(idUser);
   }
+
+  @Override
+  public UserDto getUserById(Integer idUser) {
+    return userReader.getUserById(idUser);
+  }
+
+  @Override
+  public UserDto update(Integer idUser, UserDto newInfo) {
+    return userReader.update(idUser, newInfo);
+  }
   
 }
