@@ -17,6 +17,7 @@ Users
 - [ ] Fixes
   - [ ] Show error to user when hit with two slashes ex. '<http://localhost:8080//products>'
   - [ ] Separate in AuthConfig by adapter.domain.
+  - [X] Update user picture when is updated by second time.
 
 - [ ] Add module products
   - [X] Add product

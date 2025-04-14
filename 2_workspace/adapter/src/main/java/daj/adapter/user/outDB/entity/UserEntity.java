@@ -78,7 +78,7 @@ public class UserEntity implements Serializable {
   private List<RoleEntity> roles;
 
   @OneToOne(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "picture_id", referencedColumnName = "id_picture")
+  @JoinColumn(name = "picture_id", referencedColumnName = "id")
   private UserPictureEntity idPicture;
 
   @Column(name="deleted_at", nullable = true)

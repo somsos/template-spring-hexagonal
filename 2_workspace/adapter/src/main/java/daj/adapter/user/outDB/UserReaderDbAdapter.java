@@ -80,9 +80,14 @@ public class UserReaderDbAdapter implements IUserReaderOutputPort {
 
   @Override
   public UserPictureDto saveImage(UserPictureDto requestDto) {
-    final UserEntity entity = repo.findById(requestDto.getIdUser()).orElse(null);
-    if (entity == null) {
+    final UserEntity userFound = repo.findById(requestDto.getIdUser()).orElse(null);
+    if (userFound == null) {
       throw new ErrorResponse("user id not found", 400, "");
+    }
+
+    final UserPictureDto previousPicture = this.findImageByUserId(requestDto.getIdUser());
+    if(previousPicture != null) {
+      this._deletePictureById(previousPicture.getId());
     }
 
     final UserPictureEntity toSave = mapper.userPictureDtoToUserPictureEntity(requestDto);
@@ -90,6 +95,11 @@ public class UserReaderDbAdapter implements IUserReaderOutputPort {
     
     final UserPictureDto savedMapped = mapper.userPictureEntityToPictureDto(saved);
     return savedMapped;
+  }
+
+
+  private void _deletePictureById(Integer idPicture) {
+    this.repoPictures.deleteById(idPicture);
   }
 
   @Override

@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserPictureDto {
 
-  private Integer idPicture;
+  private Integer id;
 
   private Integer idUser;
 

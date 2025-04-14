@@ -34,8 +34,7 @@ public class UserPictureEntity implements Serializable {
 
   @Id()
   @GeneratedValue(strategy=GenerationType.IDENTITY)
-  @Column(name="id_picture")
-  private Integer idPicture;
+  private Integer id;
 
   //@PrimaryKeyJoinColumn(name="id_user", referencedColumnName="id")
   @JoinColumn(name="id_user", referencedColumnName = "id", nullable = false)
