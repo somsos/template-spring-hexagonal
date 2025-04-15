@@ -23,4 +23,6 @@ public interface IUserReaderOutputPort {
 
   UserDto update(Integer idUser, UserDto newInfo);
 
+  UserDto deleteById(Integer idUser);
+
 }

@@ -63,6 +63,12 @@ public class StuffToNotFail implements IUserReaderOutputPort {
     throw new UnsupportedOperationException("Unimplemented method 'update'");
   }
 
+  @Override
+  public UserDto deleteById(Integer idUser) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+  }
+
   
   
 }

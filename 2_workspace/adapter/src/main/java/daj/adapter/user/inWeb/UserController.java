@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,6 +92,14 @@ public class UserController {
     final UserDto casted = mapper.updateRequestToDto(updateRequest);
     final UserDto updated = userCrudIP.update(id, casted);
     final UserResponse response = mapper.dtoToUserResponse(updated);
+    return response;
+  }
+
+  @DeleteMapping(POINT_USER_ID)
+  @ResponseStatus(HttpStatus.ACCEPTED)
+  public UserResponse delete(@PathVariable Integer id) {
+    final UserDto deleted = userCrudIP.deleteById(id);
+    final UserResponse response = mapper.dtoToUserResponse(deleted);
     return response;
   }
 

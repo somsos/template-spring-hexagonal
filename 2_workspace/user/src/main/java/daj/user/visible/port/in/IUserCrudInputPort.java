@@ -19,4 +19,6 @@ public interface IUserCrudInputPort {
 
   UserDto update(Integer id, UserDto casted);
   
+  UserDto deleteById(Integer id);
+
 }

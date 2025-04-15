@@ -45,5 +45,10 @@ public class UserCrudService implements IUserCrudInputPort {
   public UserDto update(Integer idUser, UserDto newInfo) {
     return userReader.update(idUser, newInfo);
   }
+
+  @Override
+  public UserDto deleteById(Integer idUser) {
+    return userReader.deleteById(idUser);
+  }
   
 }

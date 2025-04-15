@@ -136,5 +136,18 @@ public class UserReaderDbAdapter implements IUserReaderOutputPort {
     return response; 
   }
 
+  @Override
+  public UserDto deleteById(Integer idUser) {
+    final UserEntity oldInfo = repo.findById(idUser).orElse(null);
+    if(oldInfo == null) {
+      throw new ErrorResponse("User not found", 404, "");
+    }
+
+    this.repo.deleteById(oldInfo.getId());
+
+    final UserDto response = mapper.entityToDto(oldInfo);
+    return response;
+  }
+
   
 }
