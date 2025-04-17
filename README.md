@@ -1,92 +1,92 @@
-# README
+# Backend
 
-- [README](#readme)
-  - [How to use this spring, multi-module, hexagonal project template](#how-to-use-this-spring-multi-module-hexagonal-project-template)
-    - [Steps](#steps)
-  - [How to use the documentation](#how-to-use-the-documentation)
-  - [Quick Note](#quick-note)
+## Introduction
 
-## How to use this spring, multi-module, hexagonal project template
+This project is intended to be used as a template for future projects. The
+main focus is to provide a pre-built architecture and common features, so
+the next project I build won’t start it from zero, and I can take advantage of
+at least the architecture, and copy and paste some code snippets.
 
-The intention of this file is to explain how to use the file *hexagonal_project.zip*
-to create a new project
+The code follows the hexagonal architecture and, more specifically,
+the ones described in the following books.
 
-To know about the general features and decisions of the project check
-*01_documentation/guidelines/general-descriptions.md*
+1. Get Your Hands Dirty on Clean Architecture by Tom Hombergs
+2. Spring in Action, 6Ed by Craig Walls
+3. Spring Boot and Angular Hands-on full stack by Devlin Basilan and Seiji Ralph
+4. Clean Code by Robert C. Martin
+5. Code That Fits in Your Head by C. Martin
 
-### Steps
+The idea is to follow a specific architecture and patterns from a specific source
+as faithfully as possible, in this case, the book *Get Your Hands Dirty on Clean Architecture by Tom Hombergs*.
+This way, if several people work on the same code, they won’t depend on
+individuals who might not be available for consultation, but rather on defined
+sources and guides, which are much more likely to remain part of the company's
+resources. This allows new developers to integrate or replace others using the
+same foundation.
 
-1, Download and decompress the file *hexagonal_project.zip* in an working directory
+## Why I Chose Spring
 
-1, If is not required the features of product, delete:
-----module product
-----packages
-------package adapter.product
-------dependencies in adapter->pom.xml
-------package test.adapter.product
-------fix compilation error in adapter.common.authConfig.AuthConfig (they must be
---------only because IProductConstants is missing)
-------In AdapterApplication remove the lines to scan in module and adapter.product
+**DI and IoC**: Dependency Injection (DI) makes it easier to apply Inversion of
+Control (IoC), which is an essential part of the family of architectures
+based on Clean Architecture by Robert C. Martin, such as Hexagonal Architecture.
 
-1, change the groupID in (use a IDE with automatic refactor renaming) search for
-the last groupId and remplace for the new one, using the IDE multi file searcher,
-and ensure that the change is in.
+**Mature Tools**: Tools like Maven, JUnit, and Hibernate have proven over the
+years to be a good fit for enterprise applications. Many developers are already
+familiar with them, and there is also a factor of inertia, we can’t just
+rebuild projects using new and possibly better tools. We need to keep existing
+projects running. These tools focus on features developers really need, such as
+modules, libraries, and repositories.
 
---common->packages
---common->pom.xml
---test.common
+**Reuse of Knowledge**: In my experience, many tools imitate each other in how
+they work, making them similar, for example, ASP.NET MVC Core, NestJS, Angular,
+Android Dagger, etc. This allows us to reuse knowledge rather than re-learn how
+to do the same things. Instead, we can focus on improving and adding features
+the client might require. Reusing code is often difficult or even impossible,
+but reusing knowledge is easier and more available.
 
---user->packages
---user->pom.xml
---test.user
+## How it works hexagonal architecture
 
---adapter->packages
---adapter->pom.xml
---test.adapter
+As I mentioned in the introduction, I'm doing my best to follow the architecture
+defined in the first book. However, it's important to understand that there are
+different ways to apply this architecture, mostly depending on the size of the
+project. In my case, I’m following an approach suitable for a medium-sized
+project. First, because time, and second, because I’m just one developer.
 
-2, inside each submodule run the below command in the below order
---2,2, Order: common, user, adapter
---2,1, Command: mvn dependency:resolve clean install
---Note: it should run the tests and it should pass all of them.
+From the perspective of entities, I’m following this diagram:
 
-3, Open the project with the IDE and instantiate an postgres, in the file
-*01_documentation/user-guides/requirements.md* explain how. (docker container)
+![hexagonal architecture](./1_documentation/images/01_hexagonal_architecture_entities.png)
 
-4, To get familiarized with the code and architecture read the documentation,
-below is explained how to use it.
+From the perspective of artifacts, I’m following the second column of this
+diagram, which shows different ways to apply or evolve the project artifacts:
 
-____
+![artifacts](./1_documentation/images/02_artifacts.png)
 
-<!--
+The important part here is to keep the logic and domain independent of
+dependencies, because the core principle of hexagonal architecture is to
+separate the layers like an onion. The center of the onion is the domain and
+logic, which should not be aware of the existence of the outer layers.
 
-########################################################################
-########################################################################
-########################################################################
+But theory and practice are not always the same. Here's a diagram of the actual
+architecture of this project. It doesn’t follow the book exactly, but the
+intention is not to be lazy or negligent. The goal is to meet deadlines and
+requirements, given the limited resources like time and knowledge.
 
--->
+I'm also applying other well-known principles not mentioned in the main book,
+which are in another secondary books, and I believe will help make the project
+easier to maintain and evolve.
 
-____
+Here since the point of view of artifacts
 
-<!--
+![my artifacts](./1_documentation/images/03_my-artifacts.png)
 
-########################################################################
-########################################################################
-########################################################################
+Here since the point of view of entities
 
--->
+![my hexagonal architecture](./1_documentation/images/04_my-architecture.png)
 
-## How to use the documentation
+## How to create a new project using this template
 
-To know a general description of the project please see *01_documentation/guidelines/general-descriptions.md*
+ToDo:
 
-To know about how to run and/or use the application, see *01_documentation/user-guides*.
+## How take module(s) to a started project
 
-To understand how the application works so you can make some modifications, see *01_documentation/guidelines*.
-
-____
-
-## Quick Note
-
-In AuthConfig separate the conf by domain, so when the product folder is deleted,
-don't be dificult or sensible to delete the product auth config.
-
+ToDo:

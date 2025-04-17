@@ -50,6 +50,10 @@ Users
       - [ ] Onion diagram
     - [ ] Left clear
     - [ ] Write about how if one whats to save a byte[] in DB we need to give them a special compress
+    - [ ] Homologate README.md of Backend with front end
+    - [ ] Second try of how to use template of backend
+    - [ ] Add document of feature and demonstration
+      - [ ] Check of api endpoints document with last version
 
 - [X] Create template from this project
   - [X] Create essay
