@@ -45,7 +45,8 @@ Users
     - [X] remove dependencies of adapter.user to anything outside of user.port
     - [X] Export diagram from .drawio to .png (and that it looks fine)
     - [X] Sync diagram architecture and code.
-    - [X] **IMPORTANT** Add ArchUnit tests, to check that the adapter just access to the public part of the domain module
+    - [X] **IMPORTANT** Add ArchUnit tests, to check that the adapter just
+          access to the public part of the domain module.
     - [ ] Check what other diagrams should be useful
       - [ ] Onion diagram
     - [ ] Left clear
@@ -54,6 +55,8 @@ Users
     - [ ] Second try of how to use template of backend
     - [ ] Add document of feature and demonstration
       - [ ] Check of api endpoints document with last version
+    - [ ] Add swagger
+    - [ ]
 
 - [X] Create template from this project
   - [X] Create essay

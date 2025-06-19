@@ -6,7 +6,7 @@
   "configurations": [
     {
       "type": "java",
-      "name": "AdapterApp",
+      "name": "Server",
       "request": "launch",
       "mainClass": "daj.adapter.AdapterApplication",
       "projectName": "adapter"
