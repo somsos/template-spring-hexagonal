@@ -17,5 +17,10 @@ docker run --rm \
   -v ./:/app \
   -w /app \
   maven:3.9.9-eclipse-temurin-21-alpine \
-    bash ./z_scripts/build_01_build_and_install_my_modules.sh && \
-    bash ./z_scripts/build_02_jar.sh
+    bash ./z_scripts/01_build_and_install_my_modules.sh && \
+    bash ./z_scripts/02_build_jar.sh
+
+
+
+
+
