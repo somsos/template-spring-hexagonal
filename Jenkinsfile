@@ -8,7 +8,9 @@ pipeline {
         steps {
             echo 'build says hello';
             sleep 3
-            git status
+            sh '''
+              git status
+            '''
             echo 'build says bye';
         }
       }
