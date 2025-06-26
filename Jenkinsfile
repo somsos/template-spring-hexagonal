@@ -19,7 +19,7 @@ pipeline {
         steps {
             echo '######### deploy starts ######### ';
             sh '''
-              bash ./build.sh
+              bash ./run.sh
             '''
             echo '######### deploy ends ######### ';
         }
