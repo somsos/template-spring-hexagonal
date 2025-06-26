@@ -6,21 +6,22 @@ pipeline {
       
       stage('1. build') {
         steps {
-            echo 'build says hello';
-            sleep 3
+            echo '######### build starts ######### ';
             sh '''
-              git status
+              bash ./build.sh
             '''
-            echo 'build says bye';
+            echo '######### build ends ######### ';
         }
       }
 
 
       stage('2. deploy') {
         steps {
-            echo 'deploy says hello';
-            sleep 3
-            echo 'deploy says bye';
+            echo '######### deploy starts ######### ';
+            sh '''
+              bash ./build.sh
+            '''
+            echo '######### deploy ends ######### ';
         }
       }
 
