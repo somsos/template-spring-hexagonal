@@ -60,7 +60,7 @@ public class AuthController {
 
   @GetMapping(CHECK_USERS_ROLE)
   public String checkUsersRole() {
-    return "users role ok";
+    return "users role is OK";
   }
 
   @GetMapping(CHECK_PRODUCT_ROLE)

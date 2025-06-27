@@ -47,7 +47,7 @@ docker run -d --rm --name template_backend \
   --network template-network \
   --ip 173.100.1.102 \
   eclipse-temurin:21-alpine \
-    java -jar adapter-0.0.1.jar
+    java -jar adapter-0.0.1.jar -Dspring.profiles.active=default, test-docker
 
 
 echo "#########- run.sh script finished -#########"
