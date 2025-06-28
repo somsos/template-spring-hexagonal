@@ -45,7 +45,7 @@ TIMEOUT_SEC=120
 
 ##-DEPLOY
 
-docker run -d --rm --name $CONTAINER_NAME \
+docker run -d --name $CONTAINER_NAME \
   -v $PATH_JAR:/app \
   -w /app \
   -p 8201:8080 \
