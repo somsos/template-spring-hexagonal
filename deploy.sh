@@ -52,7 +52,7 @@ docker run -d --rm --name $CONTAINER_NAME \
   --network template-network \
   --ip 173.100.1.102 \
   eclipse-temurin:21-alpine \
-    java -jar adapter-0.0.1.jar -Dspring.profiles.active=$PROFILES
+    bash -c 'java -jar adapter-0.0.1.jar -Dspring.profiles.active='$PROFILES''
 
 ##END-DEPLOY
 
