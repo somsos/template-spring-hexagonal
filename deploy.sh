@@ -39,7 +39,7 @@ echo "Setup Backend"
 FILE_LOGS="./$CONTAINER_NAME.log"
 JAR_NAME="adapter-0.0.1.jar"
 PATH_JAR="./adapter/target/"
-PROFILES="default"
+PROFILES="default, test-docker"
 
 TIMEOUT_SEC=120
 
