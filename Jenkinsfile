@@ -7,9 +7,7 @@ pipeline {
       stage('1. build') {
         steps {
             echo '######### build starts ######### ';
-            sh '''
-              bash ./build.sh
-            '''
+            // sh ''' bash ./build.sh '''
             echo '######### build ends ######### ';
         }
       }
