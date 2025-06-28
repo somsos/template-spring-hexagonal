@@ -86,3 +86,28 @@ curl -v \
   --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiItMTAwIiwiaWF0IjoxNzQzOTAyMzk4LCJleHAiOjE3NDM5MDk1OTh9.QNwFa3bXIsHOJeiXvudt1N2gbx9fhI-2O-aa-WeLoFc" \
   -F picture=@./temporal/small_black.png  \
   'http://localhost:8080/users/1/pictures'
+
+
+
+
+
+
+
+
+
+
+
+
+EXIT_STATUS=$?
+if [ $EXIT_STATUS -eq 124 ]
+    then
+        echo 'Process Timed Out!'
+    else
+        echo 'Process did not timeout. Something else went wrong.'
+fi
+
+timeout 5 docker logs tmp_sleep
+docker rm tmp_sleep
+
+exit $EXIT_STATUS
+

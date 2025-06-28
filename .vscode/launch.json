@@ -6,10 +6,13 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Server",
       "request": "launch",
+      "vmArgs": [
+        "-Dspring.profiles.active=default, development"
+      ],
       "mainClass": "daj.adapter.AdapterApplication",
-      "projectName": "adapter"
+      "projectName": "adapter",
+      "name": "Server",
     }
   ]
 }
