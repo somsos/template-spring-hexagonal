@@ -11,7 +11,7 @@ docker network inspect template-network >/dev/null 2>&1 || \
 
 
 echo "deploy postgres database if it's not running"
-docker ps -a --format="table {{.Names}}" | grep template_database || \
+docker ps -a --format="table {{.Names}}" | grep template_database 1> /dev/null || \
   docker run -d --rm --name template_database \
     -e POSTGRES_DB=jab_db_test \
     -e POSTGRES_USER=jab_db_user \
@@ -30,7 +30,8 @@ docker ps -a --format="table {{.Names}}" | grep template_database || \
 
 CONTAINER_NAME="template_backend"
 echo "stopping template_backend if it's running"
-docker stop $CONTAINER_NAME 2> /dev/null || true
+docker stop $CONTAINER_NAME &> /dev/null || true
+docker rm $CONTAINER_NAME &> /dev/null || true
 
 sleep 5
 
@@ -52,7 +53,7 @@ docker run -d --name $CONTAINER_NAME \
   --network template-network \
   --ip 173.100.1.102 \
   eclipse-temurin:21-alpine \
-    bash -c 'java -jar adapter-0.0.1.jar -Dspring.profiles.active='$PROFILES''
+    sh -c 'java -jar adapter-0.0.1.jar -Dspring.profiles.active='$PROFILES''
 
 ##END-DEPLOY
 
