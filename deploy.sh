@@ -46,7 +46,7 @@ TIMEOUT_SEC=120
 
 ##-DEPLOY
 
-docker run -d --name $CONTAINER_NAME \
+docker run --rm -d --name $CONTAINER_NAME \
   -v $PATH_JAR:/app \
   -w /app \
   -p 8201:8080 \
@@ -88,5 +88,6 @@ while read line; do
   esac
 done < <(timeout "$TIMEOUT_SEC"s docker logs -f $CONTAINER_NAME)
 
+stop_container
 echo "error" "$TIMEOUT_SEC"s timeout reached
 exit 1

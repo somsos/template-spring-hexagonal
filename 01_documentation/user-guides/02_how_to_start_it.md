@@ -27,5 +27,5 @@ Inside of adapter folder run.
 
 ```shell
 cd adapter/
-mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.profiles=default,development
 ```
