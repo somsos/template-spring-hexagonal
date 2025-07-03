@@ -26,6 +26,5 @@ psql -h 127.0.0.1 -p 5001 -U jab_db_user -d jab_db_test
 Inside of adapter folder run.
 
 ```shell
-cd adapter/
-mvn spring-boot:run -Dspring-boot.run.profiles=default,development
+cd adapter/ && mvn spring-boot:run -Dspring-boot.run.profiles=default,development
 ```
