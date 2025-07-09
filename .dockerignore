@@ -5,3 +5,7 @@
 # !./adapter/
 
 **/target
+
+01_documentation
+
+.git
