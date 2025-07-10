@@ -59,6 +59,10 @@ public class AuthConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+
+            //Actuator
+            .requestMatchers("/actuator/health", "/actuator/info").permitAll()
+            .requestMatchers("/actuator/**").hasRole("ADMIN")
                 
             //Anonymous
                 .requestMatchers(HttpMethod.POST,

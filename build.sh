@@ -54,3 +54,12 @@ docker run --rm \
   -w /app \
   maven:3.9.9-eclipse-temurin-21-alpine \
     mvn clean dependency:resolve package -DskipTests=true
+
+
+
+
+
+echo -e "\n\n\n\n######### Building docker image #########"
+
+# The version is sync with the adapter/pom.xml
+docker build -t template_backend:0.0.1 .

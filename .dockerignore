@@ -1,0 +1,11 @@
+# Ignore everything
+# **
+
+# But keep this folder and its contents
+# !./adapter/
+
+**/target
+
+01_documentation
+
+.git

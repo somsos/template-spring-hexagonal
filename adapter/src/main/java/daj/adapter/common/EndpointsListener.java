@@ -1,5 +1,6 @@
 package daj.adapter.common;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import org.springframework.context.ApplicationContext;
@@ -16,14 +17,14 @@ public class EndpointsListener {
 
     @EventListener
     public void handleContextRefresh(ContextRefreshedEvent event) {
-        ApplicationContext applicationContext = event.getApplicationContext();
-        final var endpoints = new ArrayList<String>();
+        ApplicationContext appContext = event.getApplicationContext();
+        List<String> endpoints = new ArrayList<>();
         endpoints.add("\n");
-        applicationContext.getBean(RequestMappingHandlerMapping.class)
-            .getHandlerMethods().forEach((key, value) -> {
-                endpoints.add(key.toString() + "\n");
-            }
-        );
+        var mapping = appContext.getBean("requestMappingHandlerMapping", RequestMappingHandlerMapping.class);
+        mapping.getHandlerMethods().forEach((key, value) -> {
+            endpoints.add(key.toString() + "\n");
+        });
         log.info("Endpoints: " + endpoints);
     }
+
 }
