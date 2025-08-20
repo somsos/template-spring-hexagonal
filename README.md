@@ -82,11 +82,3 @@ Here since the point of view of artifacts
 Here since the point of view of entities
 
 ![my hexagonal architecture](./1_documentation/images/04_my-architecture.png)
-
-## How to create a new project using this template
-
-ToDo:
-
-## How take module(s) to a started project
-
-ToDo:

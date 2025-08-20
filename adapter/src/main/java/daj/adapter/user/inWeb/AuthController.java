@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +18,23 @@ import daj.user.visible.port.in.ILoginInputPort;
 import daj.user.visible.port.in.IRegisterInputPort;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+
 
 @RestController
 @AllArgsConstructor
+@SecurityScheme(
+    name = "bearerAuth",
+    type = SecuritySchemeType.HTTP,
+    scheme = "bearer",
+    bearerFormat = "JWT",
+    in = SecuritySchemeIn.HEADER
+)
+@SecurityRequirement(name = "bearerAuth")
 public class AuthController {
   
   public static final String LOGIN_PATH = "/auth/create-token";
@@ -54,6 +69,8 @@ public class AuthController {
   }
 
   @GetMapping(CHECK_REGISTERED_USER)
+  @Operation(summary = "checks if jwt is valid", description = "Use Header 'Authorization: Bearer xxxxx'")
+  @SecurityRequirement(name = "bearerAuth")
   public String isLogged() {
     return "valid registered user";
   }

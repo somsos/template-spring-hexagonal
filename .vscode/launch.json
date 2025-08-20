@@ -12,7 +12,7 @@
       ],
       "mainClass": "daj.adapter.AdapterApplication",
       "projectName": "adapter",
-      "name": "Server",
+      "name": "Adapter Server",
     }
   ]
 }

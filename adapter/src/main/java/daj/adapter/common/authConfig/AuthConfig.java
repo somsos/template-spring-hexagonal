@@ -61,7 +61,15 @@ public class AuthConfig {
             .authorizeHttpRequests(auth -> auth
 
             //Actuator
-            .requestMatchers("/actuator/health", "/actuator/info").permitAll()
+            .requestMatchers(
+                "/actuator/health",
+                "/actuator/info",
+                "/swagger-ui/**",
+                "/v3/api-docs/**",
+                "/swagger-ui.html",
+                "/favicon.ico"
+            ).permitAll()
+            
             .requestMatchers("/actuator/**").hasRole("ADMIN")
                 
             //Anonymous
