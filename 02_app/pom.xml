@@ -8,11 +8,18 @@
     <version>0.0.1</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <modules>
-        <module>adapter</module>
+        <module>common</module>
+        
         <module>user</module>
-	<module>product</module>
-	<module>common</module>
+        <module>product</module>
+
+        <module>adapter</module>
     </modules>
 
 </project>

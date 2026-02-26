@@ -8,19 +8,10 @@
     <version>3.3.5</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-
-
   
   <groupId>daj.common</groupId>
   <artifactId>common</artifactId>
   <version>0.0.1</version>
-
-  <properties>
-		<java.version>17</java.version>
-     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
 
   <packaging>jar</packaging>
   <name>common</name>
@@ -39,18 +30,12 @@
       <optional>true</optional>
       <version>1.18.34</version>
     </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter-api</artifactId>
-          <version>5.11.4</version>
-          <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter-engine</artifactId>
-          <version>5.11.4</version>
-          <scope>test</scope>
-      </dependency>
+
+     <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <scope>test</scope>
+    </dependency>
 
   </dependencies>
 

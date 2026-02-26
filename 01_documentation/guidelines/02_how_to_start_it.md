@@ -6,7 +6,9 @@ The project requires a Postgres instance that we can setup with the following
 docker command.
 
 ```shell
+# docker volume create template51-postgres-data-dev
 docker run --name jab_db --rm \
+  -v template51-postgres-data-dev:/var/lib/postgresql/data \
   -p 5001:5432 \
   -e POSTGRES_DB=jab_db_test \
   -e POSTGRES_USER=jab_db_user \

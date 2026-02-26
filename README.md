@@ -1,5 +1,19 @@
 # Backend
 
+- [Backend](#backend)
+  - [Quick accesses](#quick-accesses)
+  - [Introduction](#introduction)
+  - [Why I Chose Spring](#why-i-chose-spring)
+  - [How it works hexagonal architecture](#how-it-works-hexagonal-architecture)
+  - [How to run project](#how-to-run-project)
+    - [In developer mode](#in-developer-mode)
+    - [In production ready mode](#in-production-ready-mode)
+
+
+## Quick accesses
+
+- [Swagger](http://localhost:8080/swagger-ui/index.html)
+
 ## Introduction
 
 This project is intended to be used as a template for future projects. The
@@ -82,3 +96,72 @@ Here since the point of view of artifacts
 Here since the point of view of entities
 
 ![my hexagonal architecture](./1_documentation/images/04_my-architecture.png)
+
+<!--
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+-->
+
+----
+
+<!--
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+-->
+
+## How to run project
+
+### In developer mode
+
+Set up the docker service if is not runnig
+
+```shell
+sudo systemctl start docker.socket docker
+```
+
+Setup a postgres service if there is not one
+
+```shell
+docker run --rm --name template_database \
+  -e POSTGRES_DB=jab_db_test \
+  -e POSTGRES_USER=jab_db_user \
+  -e POSTGRES_PASSWORD=jab_db_pass \
+  --network template-network \
+  --ip 173.100.1.101 \
+  -p 5001:5432 \
+  postgres:17.2-alpine3.21 -c log_statement=all
+```
+
+N, Check if the it can connect, using the credencias of the file `adapter/src/main/resources/application-development.properties`.
+
+```bash
+psql -h 127.0.0.1 -p 5001 -U jab_db_user  -d jab_db_test
+# password: jab_db_pass
+# exit: \q
+```
+
+N, Get sure you have the internal dependencies in .m2
+
+```shell
+./back> mvn clean package install -DskipTests
+# OR
+./back/common> mvn clean package install -DskipTests
+./back/user> mvn clean package install -DskipTests
+./back/product> mvn clean package install -DskipTests
+./back/adapter> mvn clean package install -DskipTests
+```
+
+N, If you are using just the terminal
+
+```shell
+mvn spring-boot:run -Dspring-boot.run.profiles=default,development
+```
+
+N, If using IDE, go to `adapter/src/main/java/daj/adapter/AdapterApplication.java`
+and it should show a run button, press it.
+
+
+
+### In production ready mode
