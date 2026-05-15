@@ -30,7 +30,7 @@ public class AdapterApplication {
 
 	@GetMapping("/test")
 	public Map<String, String> test() {
-		return Map.of("message", "-2222 Some random change 2222-");
+		return Map.of("message", "33-3 Some random change 3-33");
 	}
 
 }
