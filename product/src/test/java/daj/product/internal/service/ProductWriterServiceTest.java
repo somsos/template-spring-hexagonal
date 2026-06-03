@@ -10,18 +10,18 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-/*
+
 import daj.common.depends.user.IUserDepends;
 import daj.common.depends.user.UserMDto;
 import daj.common.error.ErrorResponse;
 import daj.product.visible.port.dto.ProductDto;
 import daj.product.visible.port.out.IProductWriterOutputPort;
-*/
+
 
 @ExtendWith(MockitoExtension.class)
 public class ProductWriterServiceTest {
 
-/*
+
   @Mock
   private IProductWriterOutputPort productOutP;
 
@@ -32,7 +32,7 @@ public class ProductWriterServiceTest {
   private ProductWriterService userSrv;
 
 
- ToDo: Fix the commendted tests
+ 
   @Test
   void testSave_IfOwnerIsNull_ThrowErrorResponse() {
     final var input = new ProductDto();
@@ -46,7 +46,8 @@ public class ProductWriterServiceTest {
   }
 
 
-
+/*
+ToDo: Fix the commendted tests
   @Test
   void testSave_success() {
     //In/Out
