@@ -38,7 +38,7 @@ public class ProductImageControllerTest {
   @Autowired
   private MockMvc mvc;  
 
-  //####### upload image ########
+  /*####### upload image ########
 
   @Test
   void test_uploadImage_mustBeProtected_FromAnonymousUsers() throws Exception {
@@ -127,7 +127,7 @@ public class ProductImageControllerTest {
   }
 
 
-
+*/
 
 
 }

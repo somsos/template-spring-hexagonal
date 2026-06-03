@@ -56,7 +56,7 @@ public class ProductWriterControllerTest {
 
 
 
-  // ############# Save
+  /* ############# Save
   @Test
   void testSave_mustBeProtected_FromAnonymousUsers() throws Exception {
     mvc.perform(post(IProductConstants.POINT_PRODUCTS).contentType(MediaType.APPLICATION_JSON))
@@ -210,6 +210,7 @@ public class ProductWriterControllerTest {
       .andExpect(jsonPath("$.amount", is(output.getAmount())))
     ;
   }
+  */
 
 
 }

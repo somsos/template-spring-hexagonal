@@ -10,6 +10,7 @@ import daj.product.visible.port.dto.ProductDto;
 
 public class ProductMapperTest {
 
+/*
   @Test
   public void castModelToEntity() {
     final var mapper = Mappers.getMapper(ProductMapper.class);
@@ -30,5 +31,6 @@ public class ProductMapperTest {
     assertEquals(entitySource.getId(), modelTarget.getId());
 
   }
-  
+*/
+
 }

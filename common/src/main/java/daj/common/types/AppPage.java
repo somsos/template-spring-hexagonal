@@ -36,8 +36,8 @@ public class AppPage<E> {
   }
 
   public String toString() {
-    final String st = "Page: { totalElements: %s, pageNumber: %s, TotalPages: %s, itemsPerPage: %s, currentSize: %s}";
-    return String.format(st, totalElements, pageNumber, getTotalPages(), getItemsPerPage(), getCurrentSize());
+    final String st = "Page: { totalElements: %s, pageNumber: %s, TotalPages: %s, currentSize: %s}";
+    return String.format(st, totalElements, pageNumber, getTotalPages(), getCurrentSize());
   }
 
 

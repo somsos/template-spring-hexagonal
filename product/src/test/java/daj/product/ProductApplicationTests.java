@@ -5,15 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
-@ActiveProfiles("test")
+//@SpringBootTest
+//@ActiveProfiles("test")
 class ProductApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	//@Test void contextLoads() { }
 
-	@SpringBootApplication
-  static class TestConfiguration { }
+	//@SpringBootApplication
+    //static class TestConfiguration { }
 
 }

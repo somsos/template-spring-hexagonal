@@ -54,18 +54,18 @@ public class UserController {
    */
   @GetMapping(POINT_BY_PAGE)
   public AppPage<UserResponse> findByPage(
-    @RequestParam(defaultValue = "0") int page,
-    @RequestParam(defaultValue = "10") int itemsPerPage,
-    @RequestParam(defaultValue = "id") String sortBy,
-    @RequestParam(defaultValue = "ASC") String sortDirection, // ASC or DESC
-    @RequestParam(defaultValue = "") String query // overall search
+    @RequestParam(name = "page",          defaultValue = "0") int page,
+    @RequestParam(name = "itemsPerPage",  defaultValue = "10") int itemsPerPage,
+    @RequestParam(name = "sortBy",        defaultValue = "id") String sortBy,
+    @RequestParam(name = "sortDirection", defaultValue = "ASC") String sortDirection, // ASC or DESC
+    @RequestParam(name = "query",         defaultValue = "") String query // overall search
   ) {
     final var pageAndFilterRequest = new PageAndFilterRequestDto(page, itemsPerPage, sortBy, sortDirection, query);
     final AppPage<UserDto> pageFound = userCrudIP.findByPage(pageAndFilterRequest);
 
     //create response
     final var contentMapped = mapper.listDtoToResponse(pageFound.getContent());
-    final var pageResponse = new AppPage<UserResponse>(contentMapped, pageFound.getTotalElements(), pageFound.getPageNumber(), 5);
+    final var pageResponse = new AppPage<UserResponse>(contentMapped, pageFound.getTotalElements(), pageFound.getPageNumber(), itemsPerPage);
     return pageResponse;
   }
 
