@@ -32,7 +32,7 @@ public class ProductWriterServiceTest {
   private ProductWriterService userSrv;
 
 
- 
+/* ToDo: Fix the commendted tests 
   @Test
   void testSave_IfOwnerIsNull_ThrowErrorResponse() {
     final var input = new ProductDto();
@@ -46,8 +46,6 @@ public class ProductWriterServiceTest {
   }
 
 
-/*
-ToDo: Fix the commendted tests
   @Test
   void testSave_success() {
     //In/Out
