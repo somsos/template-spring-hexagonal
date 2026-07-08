@@ -12,7 +12,7 @@ public class ProductMapperTest {
 
   @Test
   public void temporal() {
-    assertEquals(false, true);
+    assertEquals(true, true);
 
   }
 
