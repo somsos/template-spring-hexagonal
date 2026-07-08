@@ -10,6 +10,12 @@ import daj.product.visible.port.dto.ProductDto;
 
 public class ProductMapperTest {
 
+  @Test
+  public void temporal() {
+    assertEquals(false, true);
+
+  }
+
 /*
   @Test
   public void castModelToEntity() {
