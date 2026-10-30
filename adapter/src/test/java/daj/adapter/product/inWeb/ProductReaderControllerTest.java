@@ -44,7 +44,6 @@ public class ProductReaderControllerTest {
   @Autowired
   private MockMvc mvc;
 
-/*
   @Test
   void testFindById_success() throws Exception {
     final var output = new ProductDto(1, "Product 1", 10.0f, 100, "Description 1", new Date(), null, null);
@@ -115,7 +114,5 @@ public class ProductReaderControllerTest {
         .andExpect(jsonPath("$.content[1].name").value("Product 2"))
     ;
   }
-
-*/  
 
 }

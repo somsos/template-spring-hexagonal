@@ -2,9 +2,6 @@ package daj.common.types;
 
 import java.util.List;
 
-import lombok.Getter;
-
-@Getter
 public class AppPage<E> {
   private final List<E> content;
   private final int totalElements;
@@ -33,6 +30,18 @@ public class AppPage<E> {
 
   public int getCurrentSize() {
     return content.size();
+  }
+
+  public List<E> getContent() {
+    return content;
+  }
+
+  public int getTotalElements() {
+    return totalElements;
+  }
+
+  public int getPageNumber() {
+    return totalElements;
   }
 
   public String toString() {
